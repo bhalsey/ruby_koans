@@ -15,6 +15,22 @@
 #
 def triangle(a, b, c)
   # WRITE THIS CODE
+  if a <=0 || b <= 0 || c <= 0
+    raise TriangleError, "All sides must be positive"
+  end
+
+  sorted = [a,b,c].sort
+  if sorted[0] + sorted[1] <= sorted[2]
+    raise TriangleError, "Longest side must be less than sum of other two"
+  end
+
+  if a == b && b == c
+    :equilateral
+  elsif a == b || b == c || a == c 
+    :isosceles
+  else 
+    :scalene
+  end
 end
 
 # Error class used in part 2.  No need to change this code.
